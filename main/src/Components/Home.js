@@ -10,7 +10,7 @@ export default function Home() {
     const [updateMode, setUpdateMode] = useState(false)
     const [value, newValue] = useState("")
 
-    //By Using UseReducer Hook
+    //WITH USEREDUCER HOOK
     //initialState
     const initialState = {
         lists: data
@@ -24,6 +24,7 @@ export default function Home() {
                 task
             }
             dispatch({ type: "ADD", payload: newTask })
+            setTask("")
         }
     }
 
@@ -31,14 +32,14 @@ export default function Home() {
         dispatch({ type: "DELETE", payload: id })
     }
 
-    const startUpdate = (id) => {
+    const startUpdate = () => {
         // setUpdateMode(updateMode ? false : true)
     }
 
     const handleUpdate = (id, value) => {
         dispatch({ type: "UPDATE", payload: id })
     }
-    //if done normally by useState 
+    //WITHOUT USING USEREDUCER HOOK
     // const addTask = () => {
     //     setArray([...marray,
     //     {
@@ -54,7 +55,8 @@ export default function Home() {
         <>
             <div className="Container">
                 <div className="inputContainer">
-                    <input value={task} onChange={e => setTask(e.target.value)}
+                    <input onKeyPress={e => e.key === "Enter" && addTask()}
+                        value={task} onChange={e => setTask(e.target.value)}
                         type="text" placeHolder="Enter into todo-list !!!"
                         className="entertodo" name="" id="" />
                     <input onClick={addTask} className="btn" type="button" value="ADD" />

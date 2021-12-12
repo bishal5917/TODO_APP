@@ -1,4 +1,9 @@
-//reducers 
+
+//initialState
+// const initialState = {
+//     lists: data
+// }
+
 export const reducer = (state, action) => {
     if (action.type === "ADD") {
         const newOne = [...state.lists, action.payload]

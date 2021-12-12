@@ -5,19 +5,40 @@ import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import { data } from './Data';
 
 export default function Home() {
-
-    const [marray, setArray] = useState(data)
     const [task, setTask] = useState("")
 
     //By Using UseReducer Hook
-    const initialState=[{
-        uvale:data
-    }]
 
-    const reducer=(state,action)=>{
+    //initialState
+    const initialState = {
+        lists: data,
+    }
 
+    //reducers 
+    const reducer = (state, action) => {
+        if (action.type === "ADD") {
+            const newOne = [...state.lists, action.payload]
+            return {
+                lists: newOne
+            }
+        }
+        return state;
     }
     const [state, dispatch] = useReducer(reducer, initialState)
+
+    const addTask = () => {
+        if (task) {
+            const newTask = {
+                id: new Date().getTime().toString(),
+                task
+            }
+            dispatch({ type: "ADD", payload: newTask })
+        }
+    }
+
+    const handleDelete = () => {
+
+    }
     //if done normally by useState 
     // const addTask = () => {
     //     setArray([...marray,
@@ -42,7 +63,7 @@ export default function Home() {
 
                 <div className="lists">
                     {
-                        marray.map((x) => (
+                        state.lists.map((x) => (
                             <div className="listContainer">
                                 <div className="message">
                                     {x.task}

@@ -1,0 +1,42 @@
+.Container {
+  display: flex;
+  justify-content: center;
+  height: 70vh;
+  width: 50vw;
+  margin: auto;
+  margin-top: 5rem;
+  padding: 1.3rem 1.3rem;
+  background-color: rgb(0, 0, 0);
+  border-radius: 5px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07),
+    0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07),
+    0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
+}
+.inputContainer {
+  display: flex;
+  height: fit-content;
+}
+.entertodo {
+  width: 35vw;
+  padding: 0.5rem 0.5rem;
+  background-color: transparent;
+  border: 1px solid teal;
+  outline: none;
+  font-size: 1.3rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color: wheat;
+  font-weight: 500;
+  border-radius: 10px;
+}
+.inputContainer > * {
+  margin: 5px;
+}
+.btn {
+  border-radius: 10px;
+  border: 1px solid green;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}

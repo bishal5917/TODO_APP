@@ -1,6 +1,8 @@
 .Container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
   height: 70vh;
   width: 50vw;
   margin: auto;
@@ -39,4 +41,27 @@
   cursor: pointer;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
+}
+.lists {
+  margin-top: 1.5rem;
+}
+.listContainer {
+  display: flex;
+  margin-top: 1rem;
+  background-color: rgb(10, 49, 95);
+  width: 40vw;
+  padding: 0.7rem 0.7rem;
+  border-radius: 10px;
+}
+.message {
+  color: white;
+  font-size: 1.3rem;
+  flex: 6;
+}
+.iconsContainer {
+  display: flex;
+  flex: 0.5;
+}
+.icons{
+  cursor: pointer;
 }

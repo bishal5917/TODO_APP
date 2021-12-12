@@ -3,32 +3,17 @@ import './Home.css'
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import { data } from './Data';
+import { reducer } from './Reducers';
 
 export default function Home() {
     const [task, setTask] = useState("")
+    const [updateMode, setUpdateMode] = useState(false)
+    const [value, newValue] = useState("")
 
     //By Using UseReducer Hook
-
     //initialState
     const initialState = {
         lists: data
-    }
-
-    //reducers 
-    const reducer = (state, action) => {
-        if (action.type === "ADD") {
-            const newOne = [...state.lists, action.payload]
-            return {
-                lists: newOne
-            }
-        }
-        if (action.type === "DELETE") {
-            const filtered = state.lists.filter((item) => item.id !== action.payload)
-            return {
-                lists: filtered
-            }
-        }
-        return state;
     }
     const [state, dispatch] = useReducer(reducer, initialState)
 
@@ -44,6 +29,14 @@ export default function Home() {
 
     const handleDelete = (id) => {
         dispatch({ type: "DELETE", payload: id })
+    }
+
+    const startUpdate = (id) => {
+        // setUpdateMode(updateMode ? false : true)
+    }
+
+    const handleUpdate = (id, value) => {
+        dispatch({ type: "UPDATE", payload: id })
     }
     //if done normally by useState 
     // const addTask = () => {
@@ -71,13 +64,20 @@ export default function Home() {
                     {
                         state.lists.map((x) => (
                             <div className="listContainer">
-                                <div className="message">
+                                {updateMode ? (
+                                    <input value={x.task}
+                                        onChange={e => newValue(e.target.value)} type="text"
+                                        name="" id="" />
+                                ) : (<div className="message">
                                     {x.task}
-                                </div>
+                                </div>)}
                                 <div className="iconsContainer">
-                                    <EditIcon className="icons" style={{ color: "teal" }} />
+                                    <EditIcon onClick={startUpdate}
+                                        className="icons" style={{ color: "teal" }} />
                                     <DeleteOutlinedIcon onClick={() => handleDelete(x.id)}
                                         className="icons" style={{ color: "tomato" }} />
+                                    {updateMode && <button onClick={() => handleUpdate(x.id, value)}
+                                    >Save</button>}
                                 </div>
                             </div>
                         ))

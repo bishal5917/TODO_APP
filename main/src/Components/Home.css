@@ -1,7 +1,6 @@
 .Container {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
   height: 70vh;
   width: 50vw;
@@ -17,6 +16,9 @@
 .inputContainer {
   display: flex;
   height: fit-content;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 .entertodo {
   width: 35vw;
@@ -44,6 +46,7 @@
 }
 .lists {
   margin-top: 1.5rem;
+  overflow-y: scroll;
 }
 .listContainer {
   display: flex;
@@ -52,6 +55,7 @@
   width: 40vw;
   padding: 0.7rem 0.7rem;
   border-radius: 10px;
+  z-index: 1;
 }
 .message {
   color: white;

@@ -11,7 +11,7 @@ export default function Home() {
 
     //initialState
     const initialState = {
-        lists: data,
+        lists: data
     }
 
     //reducers 
@@ -20,6 +20,12 @@ export default function Home() {
             const newOne = [...state.lists, action.payload]
             return {
                 lists: newOne
+            }
+        }
+        if (action.type === "DELETE") {
+            const filtered = state.lists.filter((item) => item.id !== action.payload)
+            return {
+                lists: filtered
             }
         }
         return state;
@@ -36,8 +42,8 @@ export default function Home() {
         }
     }
 
-    const handleDelete = () => {
-
+    const handleDelete = (id) => {
+        dispatch({ type: "DELETE", payload: id })
     }
     //if done normally by useState 
     // const addTask = () => {
